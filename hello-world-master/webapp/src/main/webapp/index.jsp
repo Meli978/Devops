@@ -1,2 +1,2 @@
-<h1> Test 2 minutes </h1>
+<h1> Test minutes </h1>
 
