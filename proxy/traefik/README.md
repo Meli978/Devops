@@ -13,4 +13,5 @@ sudo docker-compose up -d --build
         proxy_pass  http://172.17.0.1:8001/;
     }
 `
+</br>
 **rajouter / à la fin de l'url**
