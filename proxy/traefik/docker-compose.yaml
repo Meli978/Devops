@@ -1,0 +1,51 @@
+version: "3.3"
+services:
+  # Traefik to mimic the kubernetes ingress
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      # - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+
+  hello:
+    image: containous/whoami
+    ports:
+      - "8000:80"
+    labels: # auto-detects port 80 in next line
+      - "traefik.enable=true"
+      - "traefik.http.routers.hello.rule=PathPrefix(`/`)"
+      #- "traefik.http.middlewares.hello.stripprefix.prefixes=/hello"
+      #- "traefik.http.routers.hello.middlewares=hello"
+
+  
+  test:
+    image: containous/whoami
+    ports:
+      - "8002:80"
+    labels: # auto-detects port 80 in next line
+      - "traefik.enable=true"
+      - "traefik.http.routers.test.rule=PathPrefix(`/test/`)"
+      - "traefik.http.middlewares.test.stripprefix.prefixes=/test"
+      - "traefik.http.routers.test.middlewares=test"
+
+  whoami:
+    image: jwilder/whoami
+    ports:
+      - "8001:8000"
+    labels: # auto-detects port 8000 in next line
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=PathPrefix(`/api/`)"
+      - "traefik.http.middlewares.whoami.stripprefix.prefixes=/api"
+      - "traefik.http.routers.whoami.middlewares=whoami"
+
+
+  
