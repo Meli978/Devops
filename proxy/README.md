@@ -20,3 +20,15 @@ sudo docker-compose up -d --build
 # traefik
 
 Il faut qu'il soit dans le même réseau et rajouter les labels
+
+# Angular 
+
+- modifier index.html
+- e.g: si on veut que la route soit sur /app1
+- au niveau des href de html: rajouter le '/' (pour qu'il prenne en compte le port)
+
+`<base href='/'>` par `<base href='/app1/'>`
+
+# Debug
+
+- Si cela ne fonctionne pas, désactiver le pare feu: sudo ufw disable
