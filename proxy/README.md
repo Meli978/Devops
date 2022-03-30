@@ -25,7 +25,7 @@ Il faut qu'il soit dans le même réseau et rajouter les labels
 
 - modifier index.html
 - e.g: si on veut que la route soit sur /app1
-- au niveau des href de html: rajouter le '/' (pour qu'il prenne en compte le port)
+- au niveau des href de html: **rajouter le '/' à la fin de l'url (pour qu'il prenne en compte le port)**
 
 `<base href='/'>` par `<base href='/app1/'>`
 
