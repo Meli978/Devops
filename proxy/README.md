@@ -29,6 +29,23 @@ Il faut qu'il soit dans le même réseau et rajouter les labels
 
 `<base href='/'>` par `<base href='/app1/'>`
 
+- Rafraîchir les pages : modifier app-routing.module.ts
+```
+import { NgModule } from '@angular/core';
+...
+const routes: Routes = [//routes in here];
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes, { useHash: true })
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
 # Debug
 
 - Si cela ne fonctionne pas, désactiver le pare feu: sudo ufw disable
