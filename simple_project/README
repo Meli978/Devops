@@ -1,0 +1,13 @@
+This project uses a simple hello-world go app
+
+# creates go.mod file 
+go mod init app 
+
+# build and tag docker image
+sudo docker build . -t app:v1
+
+# run docker image
+sudo docker run -p 8080:8080 app:v1
+
+# access
+http://localhost:8080/
