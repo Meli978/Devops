@@ -1,0 +1,11 @@
+# install minikube
+# start minikube
+
+minikube start 
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# to access the service from browser
+
+minikube service simple-app-service -n myproject
