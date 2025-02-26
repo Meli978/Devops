@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Meli978/Devops.git'  # Replace with your repo
+    targetRevision: main
+    path: simple_project/kubernetes
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myproject
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
